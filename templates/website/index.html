@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Family Tree</title>
+</head>
+<body>
+<section class="container">
+  <section class="content">
+    <h2 align="center">Family Tree</h2>
+    <ul>
+      {% for p in person %}
+
+        <li><a href="/p/{{p.id}}">{{p.name}}</a></li>
+
+      {% endfor %}
+    </ul>
+  </section>
+</section>
+</body>
+</html>

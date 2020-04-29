@@ -1,0 +1,231 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="author" content="M_Adnan" />
+<!-- Document Title -->
+<title>{{person.name}}</title>
+
+{% load static %}
+<!-- StyleSheets -->
+<link rel="stylesheet" href="{% static 'website/css/ionicons.min.css' %}">
+<link rel="stylesheet" href="{% static 'website/css/bootstrap/bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'website/css/font-awesome.min.css' %}">
+<link rel="stylesheet" href="{% static 'website/css/main.css' %}">
+<link rel="stylesheet" href="{% static 'website/css/style.css' %}">
+<link rel="stylesheet" href="{% static 'website/css/responsive.css' %}">
+
+<!-- FontsOnline -->
+<link href="https://fonts.googleapis.com/css?family=Raleway:100,200,300,400,500,600,700,800,900" rel="stylesheet">
+
+<!-- JavaScripts -->
+<script src="{% static 'website/js/vendors/modernizr.js' %}"></script>
+<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<!-- Page Wrapper -->
+<div id="wrap"> 
+  
+  <!-- Content -->
+  <main class="cd-main-content">
+    <div id="content">
+      <div class="resume">
+        <div class="container"> 
+          
+          <!-- TOP HEAD -->
+          <div class="top-head">
+            <div class="row">
+              <div class="col-sm-6">
+                <h4>{{person.name}}</h4>
+              </div>
+              <div class="col-sm-6"> <span style="float: right;" class="btn btn-success"><a href="/">Home</a></span></div>
+            </div>
+          </div>
+          
+          <!-- Resume -->
+          <div class="row"> 
+            <!-- Sidebar -->
+            <div class="col-md-4">
+              <div class="side-bar"> 
+                
+                <!-- Professional Details -->
+                <h5 class="tittle">Personal Details</h5>
+                <img src="/media/{{person.photo}}" class="img-responsive" alt="">
+                <ul class="personal-info">
+                  <li>
+                    <p> <span> Name</span> {{person.name}} </p>
+                  </li>
+                  
+                  {% if person.nickname %}
+                  <li>
+                    <p> <span> Nick Name</span> {{person.nickname}} </p>
+                  </li>
+                  {% endif %}
+
+                  {% if person.dob %}
+                  <li>
+                    <p> <span> Date of Birth</span> {{person.dob}} </p>
+                  </li>
+                  {% endif %}
+                  
+                  <li>
+                    <p> <span> Gender</span> {{person.sex}} </p>
+                  </li>
+
+                  {% if person.address %}
+                  <li>
+                    <p> <span> Address</span> {{person.address}} </p>
+                  </li>
+                  {% endif %}
+
+
+                  {% if fathers_name %}
+                  <li>
+                    <p> <span> Father Name</span> <a href="/p/{{person.fathers_name_id}}"> {{fathers_name}} </a> </p>
+                  </li>
+                  {% endif %}
+                  
+                  {% if mothers_name %}
+                  <li>
+                    <p> <span> Mother Name</span> <a href="/p/{{person.mothers_name_id}}">  {{mothers_name}} </a> </p>
+                  </li>
+                  {% endif %}
+
+                  {% if person.education %}
+                  <li>
+                    <p> <span> Education </span> {{person.education}} </p>
+                  </li>
+                  {% endif %}
+
+                  {% if person.occupation %}                  
+                  <li>
+                    <p> <span> Occupation</span> {{person.occupation}} </p>
+                  </li>
+                  {% endif %}
+
+                  {% if person.marital_status %}                  
+                  <li>
+                    <p> <span> Marital Status</span> {{person.marital_status}} </p>
+                  </li>
+                  {% endif %}
+
+                  {% if spouse_name %}
+                  <li>
+                    <p> <span> Spouse Name</span> <a href="/p/{{person.spouse_name_id}}">  {{spouse_name}} </a> </p>
+                  </li>
+                  {% endif %}
+
+                  {% if person.mobile %}
+                  <li>
+                    <p> <span> Phone</span> {{person.mobile}} </p>
+                  </li>
+                  {% endif %}
+
+                  {% if person.place_of_married %}
+                  <li>
+                    <p> <span> Place of Married </span> {{person.place_of_married}} </p>
+                  </li>
+                  {% endif %}
+
+                  {% if person.email %}
+                  <li>
+                    <p> <span> E-mail</span> <a href="#"> {{person.email}}</a> </p>
+                  </li>
+                  {% endif %}
+
+                  {% if children|length > 0 %}
+
+                  <li>
+                    <p> <span> Children</span>
+                      {% for child in children %}
+                        <a href="/p/{{child.id}}"> {{child.name}} </a>
+                      {% endfor %}
+                    </p>
+                  </li>
+                  {% endif %}
+                </ul>
+              </div>
+            </div>
+            
+            <!-- MAIN CONTENT -->
+            <div class="col-md-8"> 
+              
+              
+              
+              
+              <div class="tab-content"> 
+                
+                
+                <!-- RESUME -->
+                <div role="tabpanel" class="tab-pane fade in active" id="resume">
+                  <div class="inside-sec"> 
+                    <!-- BIO AND SKILLS -->
+                    <h5 class="tittle">Bio & Personal Note</h5>
+                    <div class="bio-info padding-30">
+                      <p>{{person.bio | safe}}</p>
+                      <p>{{person.general_note | safe}}</p>
+                    </div>
+
+                    <h5 class="tittle">Photos</h5>
+                    
+                    <!-- PORTFOLIO -->
+                    <section class="portfolio padding-top-50 padding-bottom-50"> 
+                      <!-- Work Filter --> 
+                      <!-- PORTFOLIO ITEMS -->
+                      <div id="Container" class="item-space row col-3"> 
+
+                        {% for p in pics %}
+                        <!-- ITEM -->
+                          <article class="portfolio-item mix pf-web-design">
+                            <div class="portfolio-image"> <a href="#."> <img class="img-responsive" alt="Open Imagination" src="/media/{{p.pic}}"> </a>
+                            </div>
+                          </article>
+                        {% endfor %}
+                        
+                        
+                      </div>
+                    </section>
+
+                  </div>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <!-- End Content --> 
+  
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="rights">
+      <p>© Copyright 2016 MotiCV. All right reserved.</p>
+    </div>
+  </footer>
+  <!-- End Footer --> 
+  
+</div>
+<!-- End Page Wrapper --> 
+
+<!-- JavaScripts --> 
+<script src="{% static 'website/js/vendors/jquery/jquery.min.js' %}"></script> 
+<script src="{% static 'website/js/vendors/bootstrap.min.js' %}"></script> 
+<script src="{% static 'website/js/vendors/owl.carousel.min.js' %}"></script> 
+<script src="{% static 'website/js/vendors/jquery.isotope.min.js' %}"></script> 
+<script src="{% static 'website/js/main.js' %}"></script> 
+
+<!-- Begin Map Script--> 
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script> 
+<script src="{% static 'website/js/vendors/map.js' %}"></script>
+</body>
+
+</html>
